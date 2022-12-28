@@ -1,1 +1,0 @@
-watch -n 60 /usr/bin/git stash && /usr/bin/git pull
