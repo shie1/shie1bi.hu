@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shie1bi</title>
-    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/index.css" />
     <link rel="icon" href="/favicon.ico">
 </head>
 
@@ -51,7 +51,65 @@
             </ul>
             <p>Jelenleg egy menetrend kereső oldalon dolgozom.</p>
         </div>
+        <div class="overlay" style="display: none">
+            <div class="up item" style="opacity: 0;">
+                <a href="javascript:scroll('up')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-up"
+                        viewBox="0 0 24 24" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="18" y1="11" x2="12" y2="5" />
+                        <line x1="6" y1="11" x2="12" y2="5" />
+                    </svg>
+                </a>
+            </div>
+            <div class="down item">
+                <a href="javascript:scroll('down')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-down"
+                        viewBox="0 0 24 24" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="18" y1="13" x2="12" y2="19" />
+                        <line x1="6" y1="13" x2="12" y2="19" />
+                    </svg>
+                </a>
+            </div>
+        </div>
     </main>
+    <script>
+        let canScroll = true
+        let timer
+
+        document.querySelector("main").addEventListener('scroll', (e) => {
+            clearTimeout(timer);
+            canScroll = false
+            if (e.target.scrollTop == 0) {
+                console.log("top")
+                document.querySelector(".overlay .up").style["opacity"] = 0
+            } else {
+                document.querySelector(".overlay .up").style["opacity"] = 1
+            }
+            if (e.target.scrollTop + e.target.clientHeight == e.target.scrollHeight) {
+                console.log("bottom")
+                document.querySelector(".overlay .down").style["opacity"] = 0
+            } else {
+                document.querySelector(".overlay .down").style["opacity"] = 1
+            }
+
+            timer = setTimeout(() => {
+                canScroll = true
+            }, 50);
+        }, { passive: true });
+
+        function scroll(direction) {
+            if (canScroll) document.querySelector("main").scrollBy({ top: direction == "up" ? -50 : 50, behavior: "smooth" });
+        }
+
+        document.querySelector(".overlay").style["display"] = "flex"
+        const css = document.createElement("style")
+        css.innerHTML = "*::-webkit-scrollbar{display:none;}"
+        document.body.appendChild(css)
+    </script>
 </body>
 
 </html>
