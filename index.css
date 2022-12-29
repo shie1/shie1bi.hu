@@ -45,10 +45,11 @@ code {
   top: 0;
   background-attachment: fixed;
   background-size: cover;
+  background-position: center;
 }
 
 .section-container>.bg:not(.no-filter) {
-  filter: contrast(125%) brightness(.55);
+  filter: brightness(.75) contrast(.9);
 }
 
 .section-container img:not(.bg) {
