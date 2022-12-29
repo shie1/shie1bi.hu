@@ -14,13 +14,27 @@ code {
     monospace;
 }
 
+body {
+  overflow: hidden;
+}
+
+main {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+
+
 .section-container>* {
   margin: 0;
 }
 
 .section-container {
+  scroll-snap-align: start;
   position: relative;
-  padding: 175px 15px;
+  padding: 0 15px;
+  height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -32,7 +46,7 @@ code {
   color: white;
 }
 
-.section-container > h2 {
+.section-container>h2 {
   margin-top: -10px;
 }
 
@@ -90,6 +104,12 @@ ul.actions {
 
 .actions a:hover {
   font-size: 1.5rem;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  *::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 *::-webkit-scrollbar-track {
