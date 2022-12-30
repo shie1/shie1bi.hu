@@ -64,35 +64,53 @@
                 <p>Jelenleg egy menetrend kereső oldalon dolgozom.</p>
             </div>
         </div>
-        <noscript>
-            <div class="section">
-                <div class='section-container' style="height:min-content;padding: 24px 0;" id="no-javascript">
-                    <div style="background: black;" class="bg"></div>
-                    <p>Látom letiltottad a javascript-et, ez nem probléma, a weboldal így is tökéletesen működik, de a
-                        teljes élményért javaslom a funkció engedélyezését.</p>
-                </div>
+        <div class="overlay">
+            <div class="item left horizontal">
+                <a href="javascript:scroll('left')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left"
+                        viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <polyline points="15 6 9 12 15 18" />
+                    </svg>
+                </a>
             </div>
-        </noscript>
-        <div class="overlay" style="display: none">
-            <div class="up item" style="opacity: 0;">
+            <div class="item right horizontal">
+                <a href="javascript:scroll('right')">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right"
+                        viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <polyline points="9 6 15 12 9 18" />
+                    </svg>
+                </a>
+            </div>
+            <div class="item up vertical">
                 <a href="javascript:scroll('up')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-up"
-                        viewBox="0 0 24 24" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <polyline points="6 15 12 9 18 15" />
                     </svg>
                 </a>
             </div>
-            <div class="down item">
+            <div class="item down vertical">
                 <a href="javascript:scroll('down')">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down"
-                        viewBox="0 0 24 24" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <polyline points="6 9 12 15 18 9" />
                     </svg>
                 </a>
             </div>
         </div>
+        <noscript>
+            <div class='section-container' style="height:min-content;" id="no-javascript">
+                <div class="section" style="height: min-content;">
+                    <div style="background: black;" class="bg"></div>
+                    <p>Látom letiltottad a javascript-et, ez nem probléma, a weboldal így is tökéletesen működik, de a
+                        teljes élményért javaslom a funkció engedélyezését. Vízszintes navigációhoz használhatod a nyilakat a billentyűzeteden.</p>
+                </div>
+            </div>
+        </noscript>
     </main>
     <script src="/script.js"></script>
 </body>
