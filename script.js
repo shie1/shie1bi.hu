@@ -71,3 +71,10 @@ async function scroll(direction) {
 }
 
 document.querySelectorAll(".overlay").forEach((e) => e.style["display"] = "flex")
+
+window.addEventListener("keydown", (e) => {
+    if (e.key.startsWith("Arrow")) {
+        e.preventDefault()
+        scroll(e.key.replace("Arrow", "").toLowerCase())
+    }
+})
