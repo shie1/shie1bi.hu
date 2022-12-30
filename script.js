@@ -3,18 +3,41 @@ let timer
 moment.locale("hu")
 
 fetch("https://pipedapi.kavin.rocks/channel/UCsB9PQZp9b_ORMevZGW85jg", { method: "GET", headers: { "Content-Type": "application/json" } }).then((res) => res.json()).then(async (data) => {
-    const video = data.relatedStreams[0]
-    const title = video.title.split(" | ")
-    const titleElem = document.querySelector("#video-title")
-    title.map((line, i) => {
-        const h = document.createElement(`h${i + 2}`)
-        h.innerText = line
-        titleElem.appendChild(h)
-    })
-    document.querySelector("#video-thumbnail:not(.bg)").src = video.thumbnail.replace(/hqdefault/g, "maxresdefault")
-    document.querySelector("#video-thumbnail.bg").style["background-image"] = `url(${video.thumbnail.replace(/hqdefault/g, "maxresdefault")})`
-    document.querySelector("#video-url").href = `https://youtu.be/${video.url.split("=")[1]}`
-    document.querySelector("#video-uploaded").innerText = moment(video.uploaded).fromNow()
+    for (const video of data.relatedStreams) {
+        const section = document.createElement("div")
+        section.classList.add("section")
+
+        const bg = document.createElement("div")
+        bg.classList.add("bg", "thumbnail-bg", "no-filter")
+        bg.style["background-image"] = `url(${video.thumbnail.replace(/hqdefault/g, "maxresdefault")})`
+        section.appendChild(bg)
+
+        const link = document.createElement("a")
+        link.href = `https://youtu.be/${video.url.split("=")[1]}`
+        link.target = "_blank"
+        link.rel = "noopener noreferrer external"
+        const thumbnail = document.createElement("img")
+        thumbnail.classList.add("thumbnail")
+        thumbnail.src = video.thumbnail.replace(/hqdefault/g, "maxresdefault")
+        section.appendChild(link)
+        link.appendChild(thumbnail)
+
+        const titleGroup = document.createElement("div")
+        titleGroup.classList.add("title-group")
+        video.title.split(" | ").map((line, i) => {
+            const h = document.createElement(`h${i + 2}`)
+            h.innerText = line
+            titleGroup.appendChild(h)
+        })
+        section.appendChild(titleGroup)
+
+        const info = document.createElement("p")
+        const infoFirst = video.views === -1 ? "Közelgő premier" : `${video.views} megtekintés`
+        info.innerText = `${infoFirst} • ${moment(video.uploaded).fromNow()}`
+        section.appendChild(info)
+
+        document.querySelector(".section-container#shie1bi").appendChild(section)
+    }
 })
 
 async function getSectionContainerInFocus() {

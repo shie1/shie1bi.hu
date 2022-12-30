@@ -76,6 +76,10 @@ main {
   filter: brightness(.75) contrast(.9);
 }
 
+.thumbnail-bg{
+  filter: brightness(.4) contrast(.8);
+}
+
 img:not(.bg) {
   border: 2px solid white;
   box-shadow: 5px 5px 20px -5px black;
@@ -87,7 +91,7 @@ img.avatar {
   border-radius: 100%;
 }
 
-.section>img.thumbnail {
+img.thumbnail {
   width: 400px;
   max-width: calc(100vw - 120px);
   border-radius: 16px;
