@@ -26,6 +26,7 @@ async function updateHorizontalOverlay() {
 document.querySelectorAll(".section-container").forEach((elem) => {
     elem.addEventListener('scroll', (e) => {
         clearTimeout(timer);
+        canScroll = false
 
         document.querySelector(".overlay .left").style["opacity"] = e.target.scrollLeft == 0 ? 0 : 1
         document.querySelector(".overlay .right").style["opacity"] = (e.target.scrollWidth - e.target.offsetWidth) <= e.target.scrollLeft ? 0 : 1
