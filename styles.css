@@ -148,7 +148,7 @@ ul.actions {
   justify-content: center;
 }
 
-.item:hover {
+.item:has(a:hover) {
   filter: brightness(.6);
 }
 
