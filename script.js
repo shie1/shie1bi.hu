@@ -51,6 +51,7 @@ document.querySelector("main").addEventListener('scroll', (e) => {
 }, { passive: true });
 
 async function scroll(direction) {
+    if (!canScroll) return
     const amount = window.innerHeight / 2
     const element = await direction === "up" || direction === "down" ? document.querySelector("main") : (await getSectionContainerInFocus());
     const { top, left } = (() => {
@@ -67,7 +68,7 @@ async function scroll(direction) {
                 return { top: 0, left: 0 }
         }
     })();
-    if (canScroll) element.scrollBy({ top, left, behavior: "smooth" });
+    element.scrollBy({ top, left, behavior: "smooth" });
 }
 
 document.querySelectorAll(".overlay").forEach((e) => e.style["display"] = "flex")
