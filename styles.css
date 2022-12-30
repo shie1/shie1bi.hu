@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body {
+  overflow: hidden;
+}
+
+main {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.section>* {
+  margin: 0;
+}
+
+.section-container {
+  scroll-snap-align: center;
+  height: 100vh;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.section-container>.section {
+  z-index: 1;
+  flex-basis: 100%;
+  flex-shrink: 0;
+  margin: 0;
+  scroll-snap-align: center;
+  position: relative;
+  height: 100%;
+  width: calc(100vw - 40px);
+  max-width: calc(100vw - 40px);
+  padding: 0 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: white;
+}
+
+.section>h2 {
+  margin-top: -10px;
+}
+
+
+.section>.bg {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.section>.bg:not(.no-filter) {
+  filter: brightness(.75) contrast(.9);
+}
+
+img.avatar {
+  width: 150px;
+  border-radius: 100%;
+  border: 2px solid white;
+  box-shadow: 5px 5px 20px -5px black;
+  margin-bottom: 6px;
+}
+
+.section>p {
+  font-size: 1.15rem;
+}
+
+ul.actions {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 15px;
+  padding: 8px 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.actions a {
+  text-decoration: none;
+  color: unset;
+  transition: .1s;
+}
+
+.actions a:hover {
+  font-size: 1.5rem;
+}
+
+*::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: white;
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #b1b1b1;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #818181;
+}
+
+@media (hover: none) or (pointer: coarse) {
+  *::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+}
+
+.overlay svg {
+  height: 50px;
+  stroke-width: 1.5;
+}
+
+.overlay .item {
+  transition: .2s;
+  z-index: 2 !important;
+  cursor: pointer !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+}
+
+.overlay .up {
+  top: 0;
+}
+
+.overlay .down {
+  bottom: 0;
+}
