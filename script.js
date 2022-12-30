@@ -1,5 +1,15 @@
 let canScroll = true
 let timer
+moment.locale("hu")
+
+fetch("https://pipedapi.kavin.rocks/channel/UCsB9PQZp9b_ORMevZGW85jg", { method: "GET", headers: { "Content-Type": "application/json" } }).then((res) => res.json()).then(async (data) => {
+    const video = data.relatedStreams[0]
+    document.querySelector("#video-title").innerText = video.title
+    document.querySelector("#video-thumbnail:not(.bg)").src = video.thumbnail.replace(/hqdefault/g, "maxresdefault")
+    document.querySelector("#video-thumbnail.bg").style["background-image"] = `url(${video.thumbnail.replace(/hqdefault/g, "maxresdefault")})`
+    document.querySelector("#video-url").href = `https://youtu.be/${video.url.split("=")[1]}`
+    document.querySelector("#video-uploaded").innerText = moment(video.uploaded).fromNow()
+})
 
 async function getSectionContainerInFocus() {
     return new Promise((resolve) => {
@@ -73,6 +83,7 @@ async function scroll(direction) {
 }
 
 document.querySelectorAll(".overlay").forEach((e) => e.style["display"] = "flex")
+document.querySelector("#newest-video").style["display"] = "flex"
 
 window.addEventListener("keydown", (e) => {
     if (e.key.startsWith("Arrow")) {
