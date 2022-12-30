@@ -2,6 +2,8 @@ let canScroll = true
 let timer
 moment.locale("hu")
 
+const viewsFormatter = new Intl.NumberFormat("hu-HU", { notation: "compact" })
+
 fetch("https://pipedapi.kavin.rocks/channel/UCsB9PQZp9b_ORMevZGW85jg", { method: "GET", headers: { "Content-Type": "application/json" } }).then((res) => res.json()).then(async (data) => {
     for (const video of data.relatedStreams) {
         const section = document.createElement("div")
@@ -32,7 +34,7 @@ fetch("https://pipedapi.kavin.rocks/channel/UCsB9PQZp9b_ORMevZGW85jg", { method:
         section.appendChild(titleGroup)
 
         const info = document.createElement("p")
-        const infoFirst = video.views === -1 ? "Közelgő premier" : `${video.views} megtekintés`
+        const infoFirst = video.views === -1 ? "Közelgő premier" : `${viewsFormatter.format(video.views)} megtekintés`
         info.innerText = `${infoFirst} • ${moment(video.uploaded).fromNow()}`
         section.appendChild(info)
 
