@@ -74,7 +74,7 @@ document.querySelectorAll(".section-container").forEach((elem) => {
 
         timer = setTimeout(() => {
             canScroll = true
-        }, 200);
+        }, 50);
     }, { passive: true })
 })
 
@@ -89,7 +89,7 @@ document.querySelector("main").addEventListener('scroll', (e) => {
 
     timer = setTimeout(() => {
         canScroll = true
-    }, 200);
+    }, 50);
 }, { passive: true });
 
 async function scroll(direction) {
