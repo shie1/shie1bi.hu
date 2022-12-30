@@ -4,7 +4,13 @@ moment.locale("hu")
 
 fetch("https://pipedapi.kavin.rocks/channel/UCsB9PQZp9b_ORMevZGW85jg", { method: "GET", headers: { "Content-Type": "application/json" } }).then((res) => res.json()).then(async (data) => {
     const video = data.relatedStreams[0]
-    document.querySelector("#video-title").innerText = video.title
+    const title = video.title.split(" | ")
+    const titleElem = document.querySelector("#video-title")
+    title.map((line, i) => {
+        const h = document.createElement(`h${i + 2}`)
+        h.innerText = line
+        titleElem.appendChild(h)
+    })
     document.querySelector("#video-thumbnail:not(.bg)").src = video.thumbnail.replace(/hqdefault/g, "maxresdefault")
     document.querySelector("#video-thumbnail.bg").style["background-image"] = `url(${video.thumbnail.replace(/hqdefault/g, "maxresdefault")})`
     document.querySelector("#video-url").href = `https://youtu.be/${video.url.split("=")[1]}`

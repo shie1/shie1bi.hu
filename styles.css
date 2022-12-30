@@ -61,10 +61,6 @@ main {
   color: white;
 }
 
-.section>h2 {
-  margin-top: -10px;
-}
-
 .section>.bg {
   width: 100%;
   height: 100%;
@@ -92,8 +88,10 @@ img.avatar {
 }
 
 .section>img.thumbnail {
-  width: 30%;
-  min-width: 400px;
+  width: 400px;
+  max-width: calc(100vw - 120px);
+  border-radius: 16px;
+  min-width: 25vw;
 }
 
 .section>p {
@@ -125,13 +123,16 @@ ul.actions {
 }
 
 .actions a:hover {
-  font-size: 1.5rem;
+  font-size: 1.15em;
 }
 
 *::-webkit-scrollbar {
   display: none;
 }
 
+.title-group>* {
+  margin: 0;
+}
 
 .overlay {
   position: fixed;
