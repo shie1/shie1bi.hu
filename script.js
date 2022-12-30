@@ -74,7 +74,7 @@ document.querySelectorAll(".section-container").forEach((elem) => {
 
         timer = setTimeout(() => {
             canScroll = true
-        }, 50);
+        }, 200);
     }, { passive: true })
 })
 
@@ -89,7 +89,7 @@ document.querySelector("main").addEventListener('scroll', (e) => {
 
     timer = setTimeout(() => {
         canScroll = true
-    }, 50);
+    }, 200);
 }, { passive: true });
 
 async function scroll(direction) {
@@ -114,7 +114,6 @@ async function scroll(direction) {
 }
 
 document.querySelectorAll(".overlay").forEach((e) => e.style["display"] = "flex")
-document.querySelector("#newest-video").style["display"] = "flex"
 
 window.addEventListener("keydown", (e) => {
     if (e.key.startsWith("Arrow")) {
