@@ -19,6 +19,7 @@ fetch("https://pipedapi.kavin.rocks/channel/UCsB9PQZp9b_ORMevZGW85jg", { method:
         link.target = "_blank"
         link.rel = "noopener noreferrer external"
         const thumbnail = document.createElement("img")
+        thumbnail.draggable = false
         thumbnail.classList.add("thumbnail")
         thumbnail.src = video.thumbnail.replace(/hqdefault/g, "maxresdefault")
         section.appendChild(link)

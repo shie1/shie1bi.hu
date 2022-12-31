@@ -76,7 +76,7 @@ main {
   filter: brightness(.75) contrast(.9);
 }
 
-.thumbnail-bg{
+.thumbnail-bg {
   filter: brightness(.4) contrast(.8);
 }
 
@@ -96,6 +96,11 @@ img.thumbnail {
   max-width: calc(100vw - 120px);
   border-radius: 16px;
   min-width: 25vw;
+}
+
+img.cover{
+  height: 300px;
+  border-radius: 16px;
 }
 
 .section>p {
