@@ -100,6 +100,7 @@ img.thumbnail {
 
 img.cover{
   height: 300px;
+  max-height: calc(100vw - 120px);
   border-radius: 16px;
 }
 
