@@ -89,7 +89,7 @@ window.addEventListener("wheel", (e) => {
     }
 }, { passive: false })
 
-window.addEventListener("click",(e)=>{
+window.addEventListener("click", (e) => {
     console.log(e)
 }, { passive: false })
 
@@ -111,7 +111,18 @@ document.querySelector("main").addEventListener('scroll', (e) => {
 async function scroll(direction) {
     if (!canScroll) return
     const amount = window.innerHeight / 2
-    const element = await direction === "up" || direction === "down" ? document.querySelector("main") : (await getSectionContainerInFocus());
+    const element = await (async () => {
+        switch (direction) {
+            case "up":
+            case "down":
+                return document.querySelector("main")
+            case "left":
+            case "right":
+                return (await getSectionContainerInFocus())
+            default:
+                return document.querySelector("main")
+        }
+    })();
     const { top, left } = (() => {
         switch (direction) {
             case "up":
