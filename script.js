@@ -68,6 +68,7 @@ async function updateHorizontalOverlay() {
 document.querySelectorAll(".section-container").forEach((elem) => {
     elem.addEventListener('scroll', (e) => {
         clearTimeout(timer);
+        if (!canScroll) { e.preventDefault() }
         canScroll = false
 
         document.querySelector(".overlay .left").style["opacity"] = e.target.scrollLeft == 0 ? 0 : 1
@@ -76,11 +77,25 @@ document.querySelectorAll(".section-container").forEach((elem) => {
         timer = setTimeout(() => {
             canScroll = true
         }, 50);
-    }, { passive: true })
+    }, { passive: false })
 })
+
+window.addEventListener("wheel", (e) => {
+    e.preventDefault()
+    if (e.deltaY > 0) {
+        scroll("down")
+    } else {
+        scroll("up")
+    }
+}, { passive: false })
+
+window.addEventListener("click",(e)=>{
+    console.log(e)
+}, { passive: false })
 
 document.querySelector("main").addEventListener('scroll', (e) => {
     clearTimeout(timer);
+    if (!canScroll) { e.preventDefault() }
     canScroll = false
 
     document.querySelector(".overlay .up").style["opacity"] = e.target.scrollTop == 0 ? 0 : 1
@@ -91,7 +106,7 @@ document.querySelector("main").addEventListener('scroll', (e) => {
     timer = setTimeout(() => {
         canScroll = true
     }, 50);
-}, { passive: true });
+}, { passive: false });
 
 async function scroll(direction) {
     if (!canScroll) return

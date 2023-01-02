@@ -11,6 +11,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -98,7 +102,7 @@ img.thumbnail {
   min-width: 25vw;
 }
 
-img.cover{
+img.cover {
   height: 300px;
   max-height: calc(100vw - 120px);
   border-radius: 16px;
